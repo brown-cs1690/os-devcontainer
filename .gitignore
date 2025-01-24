@@ -1,6 +1,6 @@
 # Ignore everything in home/ except .gitkeep, so the folder appears in the repo
 home/*
-!home/.gitkeep
+!home/.profile
 
 # Ignore macOS folder information file
 .DS_Store
