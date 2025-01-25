@@ -40,6 +40,10 @@ RUN apt-get update && apt-get -y install\
   wget\
   nano
 
+# install qemu-user for regular x86_64 binaries simulation (gdb)
+# note: this was updated on jan. 25th and put here to avoid reinstalling packages above
+RUN apt-get update && apt-get -y install qemu-user
+
 # Symlink for gcc, gdb, and libstdc++ (used for reformat script)
 RUN ln -s /usr/bin/x86_64-linux-gnu-gcc-12 /usr/x86_64-linux-gnu/bin/gcc && \
   ln -s /usr/bin/x86_64-linux-gnu-gcc-12 /usr/x86_64-linux-gnu/bin/cc && \
