@@ -36,6 +36,10 @@ RUN apt-get update && apt-get -y install\
   wget\
   nano
 
+# install man pages
+# note: last updated on 01/31. this was put here to avoid reinstalling packages above
+RUN apt-get update && apt-get -y install man
+
 # Clean up temporary files
 WORKDIR /
 RUN rm -rf /tmp/*
