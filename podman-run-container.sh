@@ -9,6 +9,7 @@ verbose=false
 arch="`uname -m`"
 tag=
 platform=
+use_cc=true
 while test "$#" -ne 0; do
     if test "$1" = "-V" -o "$1" = "--verbose"; then
         verbose=true
@@ -23,6 +24,9 @@ while test "$#" -ne 0; do
         fi
     elif test "$1" = "-x" -o "$1" = "--x86-64" -o "$1" = "--x86_64" -o "$1" = "--amd64"; then
         platform=linux/amd64
+    elif test "$1" = "--no-cc"; then
+        use_cc=false
+        shift
     else
         armtext=
         if test "$arch" = "arm64" -o "$arch" = "aarch64"; then
@@ -126,5 +130,6 @@ vexec podman run -it --rm\
     -w "/home/cs1670-user" \
     --net=host \
     -e DISPLAY=host.docker.internal:0 \
+    -e ADD_CROSS_COMPILATION_TOOLCHAIN_TO_PATH=$use_cc \
     --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
     $tag
