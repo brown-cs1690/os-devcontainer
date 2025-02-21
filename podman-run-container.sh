@@ -26,6 +26,7 @@ while test "$#" -ne 0; do
         platform=linux/amd64
     elif test "$1" = "--no-cc"; then
         use_cc=false
+	container_name=cs1670-devenv-no-cc
         shift
     else
         armtext=
